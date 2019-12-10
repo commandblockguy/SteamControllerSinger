@@ -4,6 +4,9 @@ Adds the -e flag, which allows you to export a binary for use with my [player fo
 
 For best results, use a program such as MidiEditor to split a file into two channels (one for each haptic motor).
 
+USAGE:
+`Usage : steamcontrollersinger [-e] [-r] [-lDEBUG_LEVEL] [-iINTERVAL] MIDI_FILE`
+
 CURRENT ISSUES:
 
 Even with the -e flag, a controller or dongle must be attached, and you must wait for the song to convert.
