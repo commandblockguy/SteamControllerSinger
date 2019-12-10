@@ -3,7 +3,7 @@
 environment:
   QT5_BIN_DIR_STATIC_32: C:\Qt\Qt5.12.0-static\bin
   QT5_BIN_DIR_STATIC_64: C:\Qt\Qt5.12.0x64-static\bin
-  TARGET_PRO: .\src\OiramLevelEditor.pro
+  TARGET_PRO: .\src\steamcontrollersinger.pro
 
 install:
   - C:\Python35\Scripts\pip install requests jinja2
