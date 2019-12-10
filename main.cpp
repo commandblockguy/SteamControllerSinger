@@ -74,7 +74,7 @@ bool SteamController_OpenAndClaim(SteamControllerInfos* controller){
 
     int err = libusb_detach_kernel_driver(controller->dev_handle, controller->interfaceNum);
     if(err < 0 && err != LIBUSB_ERROR_NOT_FOUND) {
-        cout<<"Interface detach Error: "<<libusb_strerror(err)<<endl;
+        cout<<"Interface detach Error: "<<libusb_strerror((libusb_error)err)<<endl;
         return false;
     }
 
@@ -85,7 +85,7 @@ bool SteamController_OpenAndClaim(SteamControllerInfos* controller){
     //Claim the USB interface controlling the haptic actuators
     int r = libusb_claim_interface(controller->dev_handle,controller->interfaceNum);
     if(r < 0) {
-        cout<<"Interface claim Error: "<<libusb_strerror(r)<<endl;
+        cout<<"Interface claim Error: "<<libusb_strerror((libusb_error)r)<<endl;
         libusb_close(controller->dev_handle);
         return false;
     }
@@ -96,7 +96,7 @@ bool SteamController_OpenAndClaim(SteamControllerInfos* controller){
 void SteamController_Close(SteamControllerInfos* controller){
     int r = libusb_release_interface(controller->dev_handle,controller->interfaceNum);
     if(r < 0) {
-        cout<<"Interface release Error: "<<libusb_strerror(r)<<endl;
+        cout<<"Interface release Error: "<<libusb_strerror((libusb_error)r)<<endl;
         return;
     }
     libusb_close(controller->dev_handle);
@@ -151,7 +151,7 @@ int SteamController_PlayNote(SteamControllerInfos* controller, int haptic, int n
     int r;
     r = libusb_control_transfer(controller->dev_handle,0x21,9,0x0300,controller->interfaceNum,dataBlob,64,1000);
     if(r < 0) {
-        cout<<"Command Error: "<<libusb_strerror(r)<< endl;
+        cout<<"Command Error: "<<libusb_strerror((libusb_error)r)<< endl;
         return 1;
     }
 
@@ -198,7 +198,7 @@ void displayPlayedNotes(int channel, int8_t note){
     cout.flush();
 }
 
-void playSong(SteamControllerInfos* controller,const ParamsStruct params){
+void playSong(SteamControllerInfos* controller, ParamsStruct params){
 
     MidiFile_t midifile;
 
@@ -366,7 +366,7 @@ int main(int argc, char** argv)
     //Initializing LIBUSB
     int r = libusb_init(NULL);
     if(r < 0) {
-        cout<<"LIBUSB Init Error: "<<libusb_strerror(r)<<endl;
+        cout<<"LIBUSB Init Error: "<<libusb_strerror((libusb_error)r)<<endl;
         return 1;
     }
 
