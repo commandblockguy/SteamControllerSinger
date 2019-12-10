@@ -1,7 +1,7 @@
 #include <iostream>
 #include <chrono>
 
-#include <stdint-gcc.h>
+#include <stdint.h>
 #include <unistd.h>
 #include <stdint.h>
 
