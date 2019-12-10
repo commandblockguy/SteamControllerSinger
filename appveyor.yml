@@ -19,8 +19,8 @@ build_script:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 
   - cd build_static_32
-  - '%QT5_BIN_DIR_STATIC_32%\qmake -spec win32-msvc -tp vc "..\src\OiramLevelEditor.pro"'
-  - msbuild OiramLevelEditor.vcxproj /p:Configuration=Release /p:VcpkgTriplet=x86-windows-static
+  - '%QT5_BIN_DIR_STATIC_32%\qmake -spec win32-msvc -tp vc "..\src\steamcontrollersinger.pro"'
+  - msbuild SteamControllerSinger.vcxproj /p:Configuration=Release /p:VcpkgTriplet=x86-windows-static
   - cd ..
 
   - endlocal
@@ -29,7 +29,7 @@ build_script:
   - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
 
   - cd build_static_64
-  - '%QT5_BIN_DIR_STATIC_64%\qmake -spec win32-msvc -tp vc "..\src\OiramLevelEditor.pro"'
+  - '%QT5_BIN_DIR_STATIC_64%\qmake -spec win32-msvc -tp vc "..\src\steamcontrollersinger.pro"'
   - msbuild OiramLevelEditor.vcxproj /p:Configuration=Release /p:Platform="x64" /p:VcpkgTriplet=x64-windows-static
   - cd ..
   
@@ -45,11 +45,11 @@ on_failure:
   - cd %APPVEYOR_BUILD_FOLDER%
 
 artifacts:
- - path: build_static_32\release\OiramLevelEditor.exe
+ - path: build_static_32\release\Singer.exe
    name: static_32_release
    type: zip
  
- - path: build_static_64\release\OiramLevelEditor.exe
+ - path: build_static_64\release\Singer.exe
    name: static_64_release
    type: zip
 
